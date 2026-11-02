@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Borderless | Account</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="theme.js"></script>
+</head>
+<body class="hubx-body phase-body research-body" data-account-page>
+  <header class="hubx-main-nav phase-nav">
+    <div class="hubx-nav-inner">
+      <a href="index.html" class="hubx-logo"><span class="home-logo-mark">B</span>Borderless</a>
+      <button class="hubx-mobile-toggle" data-phase-nav-toggle type="button">Menu</button>
+      <nav class="hubx-nav-links"><a href="index.html">Explore</a><a href="companies.html">Companies</a><a href="sourcing-hub.html">Research</a><a href="rfqs.html">RFQs</a><a href="opportunities.html">Opportunities</a></nav>
+      <div class="hubx-nav-actions"><a class="hubx-link" href="account.html">Account</a><a class="hubx-cta" href="sourcing-hub.html">New search</a></div>
+    </div>
+    <div class="phase-mobile-menu"><a href="index.html">Explore</a><a href="companies.html">Companies</a><a href="sourcing-hub.html">Research</a><a href="rfqs.html">RFQs</a><a href="opportunities.html">Opportunities</a><a href="account.html">Account</a></div>
+  </header>
+  <div class="hubx-sub-nav"><div class="hubx-nav-inner hubx-sub-nav-inner"><a class="active" href="account.html">Account</a><a href="#requests">My requests</a><a href="#saved">Saved companies</a></div></div>
+  <main class="phase-main research-page">
+    <section class="phase-panel account-auth-panel" data-account-auth>
+      <div class="phase-panel-heading"><div><p class="phase-kicker">Borderless account</p><h2>Sign in to keep your research together.</h2></div></div>
+      <div class="account-auth-tabs" role="tablist" aria-label="Account access"><button class="active" type="button" data-account-mode="login" aria-selected="true">Sign in</button><button type="button" data-account-mode="register" aria-selected="false">Create account</button></div>
+      <form class="account-auth-form" data-account-login>
+        <label>Email<input type="email" name="email" autocomplete="email" required /></label>
+        <label>Password<input type="password" name="password" autocomplete="current-password" required /></label>
+        <button class="research-button research-button-primary" type="submit">Sign in</button>
+      </form>
+      <form class="account-auth-form" data-account-register hidden>
+        <label>Your name<input name="name" autocomplete="name" minlength="2" required /></label>
+        <label>Email<input type="email" name="email" autocomplete="email" required /></label>
+        <label>Password<input type="password" name="password" autocomplete="new-password" minlength="10" required /></label>
+        <button class="research-button research-button-primary" type="submit">Create account</button>
+      </form>
+      <p class="research-message" data-account-auth-message role="status"></p>
+    </section>
+    <div data-account-content hidden>
+    <div class="account-session-bar"><p data-account-identity></p><button class="research-button research-button-secondary" type="button" data-account-logout>Sign out</button></div>
+    <section class="phase-page-heading phase-heading-compact"><div><p class="phase-kicker">Your account</p><h1>Requests and saved companies</h1><p>Keep your research history and company shortlist together.</p></div><a class="research-button research-button-primary" href="sourcing-hub.html">Start a search</a></section>
+    <section class="phase-panel" id="requests"><div class="phase-panel-heading"><div><p class="phase-kicker">Search history</p><h2>My research requests</h2></div></div><div class="research-request-list" data-account-requests><p class="research-empty">Loading requests</p></div></section>
+    <section class="phase-panel" id="saved"><div class="phase-panel-heading"><div><p class="phase-kicker">Your shortlist</p><h2>Saved companies</h2></div></div><div class="account-saved-list" data-account-saved><p class="research-empty">Loading saved companies</p></div></section>
+    <section class="phase-panel" id="introductions"><div class="phase-panel-heading"><div><p class="phase-kicker">Tracked follow-up</p><h2>Introduction requests</h2></div></div><div class="account-introductions-list" data-account-introductions><p class="research-empty">Loading introduction requests</p></div></section>
+    </div>
+  </main>
+  <script src="phase1.js"></script>
+  <script src="research.js"></script>
+</body>
+</html>

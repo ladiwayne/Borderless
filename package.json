@@ -1,0 +1,14 @@
+{
+  "name": "borderless-app",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Borderless marketplace, RFQ board, and sourcing hub",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Borderless | Sourcing Hub</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="hubx-body">
+    <header class="hubx-main-nav">
+      <div class="hubx-nav-inner">
+        <a href="index.html" class="hubx-logo"><span class="home-logo-mark">B</span>Borderless</a>
+        <button class="hubx-mobile-toggle" type="button" data-nav-toggle="mobileMenuHub">Menu</button>
+        <nav class="hubx-nav-links">
+          <a href="index.html">Explore</a>
+          <a href="companies.html">Companies</a>
+          <a href="rfqs.html">RFQs</a>
+          <a href="sourcing-hub.html" class="active">Sourcing Hub</a>
+          <a href="opportunities.html">Opportunities</a>
+        </nav>
+        <div class="hubx-nav-actions">
+          <a href="account.html" class="hubx-link">Account</a>
+          <a href="onboarding.html" class="hubx-cta">Join Borderless</a>
+        </div>
+      </div>
+      <div id="mobileMenuHub" class="hubx-mobile-menu">
+        <a href="index.html">Explore</a>
+        <a href="companies.html">Companies</a>
+        <a href="rfqs.html">RFQs</a>
+        <a href="sourcing-hub.html">Sourcing Hub</a>
+        <a href="opportunities.html">Opportunities</a>
+        <a href="account.html">Account</a>
+        <a href="dashboard.html">Workspace</a>
+        <a href="onboarding.html">Start trading</a>
+      </div>
+    </header>
+
+    <div class="hubx-sub-nav">
+      <div class="hubx-nav-inner hubx-sub-nav-inner">
+        <a href="sourcing-hub.html" class="active">Sourcing Hub</a>
+        <a href="index.html">Marketplace</a>
+        <a href="rfqs.html">RFQs</a>
+      </div>
+    </div>
+
+    <main class="hubx-layout">
+      <section class="research-quick-search">
+        <div class="research-quick-heading">
+          <div><p class="phase-kicker">Market research</p><h1>Find the right trade partners.</h1><p>Tell us what you need. A Borderless researcher will review the market and return relevant company matches.</p></div>
+          <a href="account.html">View account</a>
+        </div>
+        <div class="research-auth-prompt" data-research-auth-required>
+          <p>Sign in to submit a search, track research progress, and keep your company shortlist between visits.</p>
+          <a class="research-button research-button-primary" href="account.html?next=sourcing-hub.html">Sign in or create account</a>
+        </div>
+        <form class="research-request-form" data-research-form hidden>
+          <fieldset class="research-role-choice"><legend>I am looking for</legend><label><input type="radio" name="type" value="buyers" checked /><span>Buyers</span></label><label><input type="radio" name="type" value="suppliers" /><span>Suppliers</span></label></fieldset>
+          <label>Product or category<input name="product" required placeholder="Sesame, avocado, coffee" /></label>
+          <label>Target market<input name="market" required placeholder="Country or region" /></label>
+          <label>Origin market<input name="origin" placeholder="Optional" /></label>
+          <label>HS code<input name="hsCode" inputmode="numeric" placeholder="Optional" /></label>
+          <button class="research-button research-button-primary" type="submit">Submit request</button>
+        </form>
+        <p class="research-message" data-research-message role="status"></p>
+        <div class="research-request-history" data-research-history hidden><div class="phase-panel-heading"><div><p class="phase-kicker">Your activity</p><h2>Recent research requests</h2></div><a href="account.html">View all requests</a></div><div class="research-request-list" data-my-research-list><p class="research-empty">Loading requests</p></div></div>
+      </section>
+      <aside class="hubx-left-col">
+        <article class="hubx-card">
+          <h3>Featured</h3>
+          <img src="assets/rice.jpg" alt="Close view of rice grains" />
+          <p>Long grain rice • Made in Italy</p>
+        </article>
+
+        <article class="hubx-card">
+          <h3>Recommended price data</h3>
+          <h4>Fresh Celery @ Philadelphia</h4>
+          <p>United States / Philadelphia</p>
+          <div class="hubx-chart-mock">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+          </div>
+          <div class="hubx-price-row">
+            <div>
+              <strong>61</strong>
+              <p>Latest price</p>
+            </div>
+            <div>
+              <strong>31</strong>
+              <p>Previous price</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="hubx-card">
+          <div class="hubx-section-head">
+            <h3>Marketplace Preview</h3>
+            <a href="index.html">View all</a>
+          </div>
+          <div class="v2-mini-filters" data-group="preview-filter">
+            <button type="button" class="active" data-filter="latest">Latest</button>
+            <button type="button" data-filter="trending">Trending</button>
+            <button type="button" data-filter="price">Best price</button>
+          </div>
+          <div id="previewGrid" class="v2-thumb-grid">
+            <a href="index.html" class="v2-thumb" data-tags="latest trending" data-price="mid"><img src="assets/avocado.jpg" alt="Hass avocado" /><span>Avocado</span></a>
+            <a href="index.html" class="v2-thumb" data-tags="latest price" data-price="low"><img src="assets/maize.jpg" alt="Yellow maize kernels" /><span>Maize</span></a>
+            <a href="index.html" class="v2-thumb" data-tags="trending" data-price="high"><img src="assets/cocoa.jpg" alt="Cocoa beans and pod" /><span>Cocoa</span></a>
+            <a href="index.html" class="v2-thumb" data-tags="latest" data-price="mid"><img src="assets/sesame.jpg" alt="White sesame seeds" /><span>Sesame</span></a>
+            <a href="index.html" class="v2-thumb" data-tags="price" data-price="low"><img src="assets/rice.jpg" alt="Rice grains" /><span>Rice</span></a>
+            <a href="index.html" class="v2-thumb" data-tags="trending latest" data-price="mid"><img src="assets/cashew.jpg" alt="Raw cashew nuts" /><span>Cashew</span></a>
+          </div>
+        </article>
+      </aside>
+
+      <section class="hubx-feed-col">
+        <article class="hubx-card hubx-personalized-card">
+          <div class="hubx-section-head">
+            <h3>Personalized feed <span class="hubx-info-dot">i</span></h3>
+            <a href="#" class="hubx-personalize-link">Personalize <span>&gt;</span></a>
+          </div>
+          <form id="postComposer" class="v2-composer-form hubx-minimal-composer">
+            <input id="exporterName" type="hidden" value="Danson Tanzania Limited" />
+            <textarea id="postContent" placeholder="Create a post" required></textarea>
+
+            <div id="productFields" class="product-fields hidden">
+              <input id="productName" type="text" placeholder="Product name (ex: Hass Avocado)" />
+              <input id="productOrigin" type="text" placeholder="Origin (ex: Tanzania)" />
+              <input id="productPrice" type="text" placeholder="Indicative price (ex: USD 1,250 / MT)" />
+            </div>
+
+            <div id="rfqFields" class="rfq-fields hidden">
+              <input id="rfqCommodity" type="text" placeholder="RFQ commodity (ex: Sesame)" />
+              <input id="rfqQuantity" type="text" placeholder="Quantity (ex: 40 MT)" />
+              <input id="rfqDeadline" type="text" placeholder="Response deadline (ex: 3 days)" />
+            </div>
+
+            <div class="hubx-composer-actions">
+              <label class="hubx-media-action" for="mediaFile">Photo</label>
+              <button type="button" class="hubx-media-action hubx-media-action-muted">Video</button>
+            </div>
+
+            <input id="mediaFile" type="file" accept="image/png, image/jpeg, image/webp" />
+            <button class="hubx-hidden-submit" type="submit">Publish</button>
+          </form>
+        </article>
+
+        <article class="hubx-card">
+          <div class="hubx-section-head">
+            <h3>Live feed</h3>
+            <a href="#">Updates</a>
+          </div>
+          <div class="v2-feed-filter-row" data-group="feed-filter">
+            <button type="button" class="active" data-feed-filter="all">All</button>
+            <button type="button" data-feed-filter="update">Normal</button>
+            <button type="button" data-feed-filter="product">Products</button>
+            <button type="button" data-feed-filter="rfq">RFQs</button>
+          </div>
+
+          <div id="feedStream" class="v2-feed-stream">
+            <article class="v2-social-post" data-type="product">
+              <div class="post-meta"><strong>Danson Tanzania Limited</strong><span>Product post · 2m ago</span></div>
+              <p>Uploaded 3 new products. Export slot available for week 33 dispatch.</p>
+              <img src="assets/avocado.jpg" alt="Hass avocados ready for export" />
+              <div class="product-chip-row"><span>Hass Avocado</span><span>Tanzania</span><span>Grade A</span></div>
+            </article>
+
+            <article class="v2-social-post" data-type="rfq">
+              <div class="post-meta"><strong>FreshHarvest Buyer Group</strong><span>RFQ post · 26m ago</span></div>
+              <p>Seeking 60 MT yellow maize with SGS and CFR Mombasa terms. Prefer delivery in 10 days.</p>
+              <div class="product-chip-row"><span>Yellow Maize</span><span>60 MT</span><span>10 days</span></div>
+            </article>
+
+            <article class="v2-social-post" data-type="update">
+              <div class="post-meta"><strong>Northstar Exporters</strong><span>Normal post · 45m ago</span></div>
+              <p>Sesame stock replenished. We can lock FOB rates for buyers confirming before Friday.</p>
+            </article>
+          </div>
+        </article>
+      </section>
+
+      <aside class="hubx-right-col">
+        <article class="hubx-card">
+          <h3>Me</h3>
+          <p>Sign in or join Borderless to personalize your sourcing feed and alerts.</p>
+          <a href="#" class="hubx-inline-link">Sign in</a>
+        </article>
+
+        <article class="hubx-card">
+          <div class="hubx-section-head">
+            <h3>Market Overviews</h3>
+            <a href="index.html">Browse</a>
+          </div>
+          <ul class="hubx-mini-list">
+            <li><a href="index.html">Fresh Avocado</a></li>
+            <li><a href="index.html">Maize (Corn)</a></li>
+            <li><a href="index.html">Wheat</a></li>
+            <li><a href="index.html">Rice</a></li>
+          </ul>
+        </article>
+
+        <article class="hubx-card">
+          <div class="hubx-section-head">
+            <h3>RFQs</h3>
+            <a href="rfqs.html">View all</a>
+          </div>
+          <div class="v2-rfq-mini-list">
+            <article class="v2-rfq-mini-item">
+              <div class="v2-rfq-top"><span class="v2-tag">Buyer RFQ</span><span>3 days left</span></div>
+              <h4>White sesame seed, 40 MT</h4>
+              <p>Destination UAE • FOB</p>
+            </article>
+            <article class="v2-rfq-mini-item">
+              <div class="v2-rfq-top"><span class="v2-tag v2-tag-soft">Exporter RFQ</span><span>Urgent</span></div>
+              <h4>Need carton packaging partner</h4>
+              <p>Tanzania • 2 days response</p>
+            </article>
+          </div>
+        </article>
+      </aside>
+    </main>
+
+    <script src="theme.js"></script>
+    <script src="app.js"></script>
+    <script src="phase1.js"></script>
+    <script src="research.js"></script>
+  </body>
+</html>

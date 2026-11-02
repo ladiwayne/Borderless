@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Borderless | Research Results</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="theme.js"></script>
+</head>
+<body class="hubx-body phase-body research-body" data-research-results>
+  <header class="hubx-main-nav phase-nav">
+    <div class="hubx-nav-inner">
+      <a href="index.html" class="hubx-logo"><span class="home-logo-mark">B</span>Borderless</a>
+      <button class="hubx-mobile-toggle" data-phase-nav-toggle type="button">Menu</button>
+      <nav class="hubx-nav-links"><a href="index.html">Explore</a><a href="companies.html">Companies</a><a class="active" href="sourcing-hub.html">Research</a><a href="rfqs.html">RFQs</a><a href="opportunities.html">Opportunities</a></nav>
+      <div class="hubx-nav-actions"><a href="account.html" class="hubx-link">Account</a><a href="sourcing-hub.html" class="hubx-cta">New search</a></div>
+    </div>
+    <div class="phase-mobile-menu"><a href="index.html">Explore</a><a href="companies.html">Companies</a><a href="sourcing-hub.html">Research</a><a href="rfqs.html">RFQs</a><a href="opportunities.html">Opportunities</a><a href="account.html">Account</a></div>
+  </header>
+  <div class="hubx-sub-nav"><div class="hubx-nav-inner hubx-sub-nav-inner"><a href="sourcing-hub.html">New search</a><a class="active" href="research.html">Request status</a><a href="account.html">My account</a></div></div>
+  <main class="phase-main research-page">
+    <section class="phase-page-heading phase-heading-compact"><div><p class="phase-kicker">Research request</p><h1 data-request-heading>Loading your request</h1><p data-request-details>Loading search details</p></div><span class="research-status" data-request-status>Loading</span></section>
+    <p class="research-message" data-research-page-message role="status"></p>
+    <section class="research-step-track" aria-label="Research progress">
+      <div class="research-step is-complete" data-research-step><span>01</span><strong>Request received</strong></div>
+      <div class="research-step" data-research-step><span>02</span><strong>Team research</strong></div>
+      <div class="research-step" data-research-step><span>03</span><strong>Company matches</strong></div>
+      <div class="research-step"><span>04</span><strong>Contact and act</strong></div>
+    </section>
+    <section class="phase-panel research-pending" data-research-pending>
+      <p class="phase-kicker">Research in progress</p>
+      <h2>A Borderless researcher is reviewing the market.</h2>
+      <p>Our team checks company fit, market coverage, and verification status before publishing matches.</p>
+      <p class="research-response-target" data-request-response-target></p>
+      <div class="research-request-controls" data-request-controls hidden>
+        <button class="research-button research-button-secondary" type="button" data-toggle-request-edit>Edit request</button>
+        <button class="research-button research-remove-button" type="button" data-cancel-request>Cancel request</button>
+      </div>
+      <form class="research-edit-form" data-request-edit hidden>
+        <label>Search for<select name="type"><option value="buyers">Buyers</option><option value="suppliers">Suppliers</option></select></label>
+        <label>Product or category<input name="product" required /></label>
+        <label>Target market<input name="market" required /></label>
+        <label>Origin market<input name="origin" /></label>
+        <label>HS code<input name="hsCode" inputmode="numeric" /></label>
+        <button class="research-button research-button-primary" type="submit">Save request changes</button>
+      </form>
+      <a class="research-button research-button-secondary" href="account.html">View my requests</a>
+    </section>
+    <section class="phase-panel research-results-panel" data-research-results-content hidden>
+      <div class="phase-panel-heading"><div><p class="phase-kicker">Research complete</p><h2>Matched companies</h2></div><a href="account.html">Saved companies and requests</a></div>
+      <div class="research-filters">
+        <label>Search companies<input type="search" data-results-search placeholder="Company, product, or market" /></label>
+        <label>Type<select data-results-type><option value="all">Buyers and suppliers</option><option value="buyer">Buyers</option><option value="supplier">Suppliers</option></select></label>
+        <label>Country<select data-results-country><option value="all">All countries</option></select></label>
+        <label>Trade activity<select data-results-activity><option value="all">All activity</option><option value="high">High</option><option value="medium">Medium</option><option value="emerging">Emerging</option></select></label>
+      </div>
+      <p class="research-data-note">Activity levels reflect recorded opportunities, not live monitoring. Match reasons and review dates are provided by the Borderless research team.</p>
+      <div class="research-result-head"><span>Company</span><span>Products and markets</span><span>Activity</span><span>Actions</span></div>
+      <div class="research-results-list" data-research-results-list></div>
+    </section>
+  </main>
+  <script src="phase1.js"></script>
+  <script src="research.js"></script>
+</body>
+</html>

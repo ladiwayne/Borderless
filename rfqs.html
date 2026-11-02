@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Borderless | RFQs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="hubx-body">
+    <header class="hubx-main-nav">
+      <div class="hubx-nav-inner">
+        <a href="index.html" class="hubx-logo"><span class="home-logo-mark">B</span>Borderless</a>
+        <button class="hubx-mobile-toggle" type="button" data-nav-toggle="mobileMenuRfqs">Menu</button>
+        <nav class="hubx-nav-links">
+          <a href="index.html">Explore</a>
+          <a href="companies.html">Companies</a>
+          <a href="rfqs.html" class="active">RFQs</a>
+          <a href="sourcing-hub.html">Sourcing Hub</a>
+          <a href="opportunities.html">Opportunities</a>
+        </nav>
+        <div class="hubx-nav-actions">
+          <a href="dashboard.html" class="hubx-link">Workspace</a>
+          <a href="onboarding.html" class="hubx-cta">Start trading</a>
+        </div>
+      </div>
+      <div id="mobileMenuRfqs" class="hubx-mobile-menu">
+        <a href="index.html">Explore</a>
+        <a href="companies.html">Companies</a>
+        <a href="rfqs.html">RFQs</a>
+        <a href="sourcing-hub.html">Sourcing Hub</a>
+        <a href="opportunities.html">Opportunities</a>
+        <a href="dashboard.html">Workspace</a>
+        <a href="onboarding.html">Start trading</a>
+      </div>
+    </header>
+
+    <div class="hubx-sub-nav">
+      <div class="hubx-nav-inner hubx-sub-nav-inner">
+        <a href="sourcing-hub.html">Sourcing Hub</a>
+        <a href="index.html">Marketplace</a>
+        <a href="rfqs.html" class="active">RFQs</a>
+      </div>
+    </div>
+
+    <main class="v2-main hubx-page-main">
+        <section class="v2-hero v2-hero-tight">
+          <div>
+            <p class="v2-kicker">Buyer Requests</p>
+            <h1>Structured RFQ board for high-intent buying needs.</h1>
+            <p class="v2-lead">Track incoming requests by urgency, destination, and timeline. Exporters can respond with quotes immediately.</p>
+          </div>
+          <div class="v2-hero-metric">
+            <strong>312</strong>
+            <span>open RFQs across 16 markets</span>
+          </div>
+        </section>
+
+        <section class="phase-inline-action-panel"><div><p class="phase-kicker">Buyer requirement</p><h2>Need help finding supply?</h2><p>Publish a structured request and let the network respond.</p></div><form class="phase-rfq-form" data-rfq-creation-form><input name="title" required placeholder="What do you need? (ex: White sesame seed)" /><input name="qty" required type="number" placeholder="Quantity MT" /><input name="destination" required placeholder="Destination" /><input name="deadline" placeholder="Response timing" /><textarea name="description" placeholder="Specifications and commercial requirements"></textarea><button class="phase-button phase-button-primary" type="submit">Publish RFQ <span>↗</span></button></form><div class="phase-success" data-phase-success></div><div class="phase-error" data-phase-error></div></section>
+
+        <section class="v2-filters">
+          <select id="rfqRoleFilter">
+            <option value="all">All RFQs</option>
+            <option value="buyer">Buyer RFQs</option>
+            <option value="exporter">Exporter RFQs</option>
+          </select>
+          <select id="rfqStatusFilter">
+            <option value="all">All statuses</option>
+            <option value="urgent">Urgent</option>
+            <option value="open">Open</option>
+          </select>
+          <select id="rfqSort">
+            <option value="latest">Latest</option>
+            <option value="qty-high">Highest quantity</option>
+            <option value="qty-low">Lowest quantity</option>
+          </select>
+        </section>
+
+        <section id="rfqBoard" class="v2-rfq-board">
+          <article class="v2-rfq-card" data-role="buyer" data-status="urgent" data-qty="40" data-order="1">
+            <div class="v2-rfq-top"><span class="v2-tag">Buyer RFQ</span><span>Urgent · 2 days left</span></div>
+            <h3>White sesame seed, 40 MT, FOB Lagos</h3>
+            <p>Need inspection certificate, moisture profile, and two shipment slots in August.</p>
+            <div class="v2-meta"><span>Destination: UAE</span><strong>40 MT</strong></div>
+          </article>
+
+          <article class="v2-rfq-card" data-role="exporter" data-status="open" data-qty="15" data-order="2">
+            <div class="v2-rfq-top"><span class="v2-tag v2-tag-soft">Exporter RFQ</span><span>Open · 5 days left</span></div>
+            <h3>Looking for reefer logistics partner for avocado</h3>
+            <p>Weekly cold-chain movement to Rotterdam, 15 MT average load, temperature compliance required.</p>
+            <div class="v2-meta"><span>Origin: Tanzania</span><strong>15 MT</strong></div>
+          </article>
+
+          <article class="v2-rfq-card" data-role="buyer" data-status="open" data-qty="25" data-order="3">
+            <div class="v2-rfq-top"><span class="v2-tag">Buyer RFQ</span><span>Open · 4 days left</span></div>
+            <h3>Raw cashew kernel W240, 25 MT CIF Jeddah</h3>
+            <p>Buyer requests lab test, broken ratio details, and sample timeline before final quote.</p>
+            <div class="v2-meta"><span>Destination: Saudi Arabia</span><strong>25 MT</strong></div>
+          </article>
+
+          <article class="v2-rfq-card" data-role="buyer" data-status="urgent" data-qty="60" data-order="4">
+            <div class="v2-rfq-top"><span class="v2-tag">Buyer RFQ</span><span>Urgent · 24h left</span></div>
+            <h3>Yellow maize feed grade, 60 MT, CFR Mombasa</h3>
+            <p>Immediate supplier confirmation required with SGS report and packing details.</p>
+            <div class="v2-meta"><span>Destination: Kenya</span><strong>60 MT</strong></div>
+          </article>
+        </section>
+    </main>
+
+    <script src="theme.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
