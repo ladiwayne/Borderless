@@ -3316,6 +3316,75 @@ html[data-theme="dark"] .borderless-home .home-hero { --desk-ink: #081c1d; backg
   .company-product-row { grid-template-columns: 1fr; gap: 5px; }
 }
 
+/* Final layout guard: keep the sticky header from wrapping over page content. */
+body .hubx-main-nav {
+  background: #10251f !important;
+  border-bottom: 1px solid rgba(255, 255, 255, .14) !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+body .hubx-nav-inner {
+  min-height: 72px;
+  flex-wrap: nowrap;
+}
+
+body .hubx-logo {
+  flex: 0 0 auto;
+  min-width: max-content;
+}
+
+body .hubx-nav-links {
+  min-width: 0;
+  flex: 1 1 auto;
+  justify-content: center;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+body .hubx-nav-links a {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+body .hubx-nav-actions {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+@media (max-width: 1300px) and (min-width: 801px) {
+  body .hubx-nav-links {
+    gap: 4px;
+  }
+
+  body .hubx-nav-links a {
+    padding-inline: 7px;
+    font-size: .74rem;
+  }
+
+  .borderless-home .hubx-nav-links a:nth-child(3),
+  .borderless-home .hubx-nav-links a:nth-child(7) {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  body .hubx-nav-inner {
+    min-height: 58px;
+  }
+
+  body .hubx-nav-links,
+  body .hubx-nav-actions {
+    display: none !important;
+  }
+
+  body .hubx-mobile-menu {
+    top: 100%;
+    max-height: min(72vh, 520px);
+    overflow-y: auto;
+  }
+}
+
 [hidden] {
   display: none !important;
 }
