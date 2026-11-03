@@ -29,22 +29,26 @@
       }
 
       menu.id ||= `mobile-navigation-${index + 1}`;
-      menu.replaceChildren();
-      const seenLinks = new Set();
-      const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-      const linkSources = [navigation, actions].filter(Boolean);
-      linkSources.forEach((source) => source.querySelectorAll('a[href]').forEach((sourceLink) => {
-        const href = sourceLink.getAttribute('href');
-        if (!href || href === '#' || seenLinks.has(href)) return;
-        seenLinks.add(href);
-        const link = sourceLink.cloneNode(true);
-        const destination = new URL(link.href, window.location.href);
-        if (destination.pathname.split('/').pop() === currentPage && !destination.hash) {
-          link.classList.add('active');
-          link.setAttribute('aria-current', 'page');
-        }
-        menu.append(link);
-      }));
+      if (menu.children.length === 0) {
+        const seenLinks = new Set();
+        const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+        const linkSources = [navigation, actions].filter(Boolean);
+        linkSources.forEach((source) => source.querySelectorAll('a[href]').forEach((sourceLink) => {
+          const href = sourceLink.getAttribute('href');
+          if (!href || href === '#' || seenLinks.has(href)) return;
+          seenLinks.add(href);
+          const link = sourceLink.cloneNode(true);
+          if (link.classList.contains('hubx-cta')) {
+            link.classList.add('mobile-cta-link');
+          }
+          const destination = new URL(link.href, window.location.href);
+          if (destination.pathname.split('/').pop() === currentPage && !destination.hash) {
+            link.classList.add('active');
+            link.setAttribute('aria-current', 'page');
+          }
+          menu.append(link);
+        }));
+      }
 
       let toggle = header.querySelector('.hubx-mobile-toggle');
       if (!toggle) {

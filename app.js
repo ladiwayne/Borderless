@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   setupComposer();
   setupFeedFilters();
   setupFeedInteractions();
+  initMarketInsights();
 });
 
 function setupGroupedButtons() {
@@ -540,3 +541,192 @@ function formatRelativeTime(timestamp) {
   const days = Math.round(hours / 24);
   return `${days}d ago`;
 }
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+async function initMarketInsights() {
+  const container = document.getElementById('marketInsights');
+  if (!container) return;
+
+  const refreshBtn = document.getElementById('refreshInsightsBtn');
+  const loadingEl = document.getElementById('insightsLoading');
+  const contentEl = document.getElementById('insightsContent');
+  const spinnerEl = document.getElementById('refreshSpinner');
+
+  async function loadInsights(forceRefresh = false) {
+    if (loadingEl) loadingEl.style.display = 'block';
+    if (contentEl) contentEl.style.display = 'none';
+    if (refreshBtn) {
+      refreshBtn.disabled = true;
+      refreshBtn.classList.add('loading');
+    }
+    if (spinnerEl) spinnerEl.classList.add('spinning');
+
+    try {
+      const url = forceRefresh ? '/api/market-insights?refresh=true' : '/api/market-insights';
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`HTTP error ${res.status}`);
+      const data = await res.json();
+      if (data && data.item) {
+        renderMarketInsights(data.item, contentEl);
+      } else {
+        throw new Error('Invalid insights payload');
+      }
+    } catch (err) {
+      console.error('Error fetching market insights:', err);
+      if (contentEl) {
+        contentEl.innerHTML = `
+          <div class="insight-error-state">
+            <p>Unable to load market trends right now.</p>
+            <button type="button" class="insight-retry-btn" onclick="window.reloadMarketInsights(true)">Retry Analysis</button>
+          </div>
+        `;
+      }
+    } finally {
+      if (loadingEl) loadingEl.style.display = 'none';
+      if (contentEl) contentEl.style.display = 'block';
+      if (refreshBtn) {
+        refreshBtn.disabled = false;
+        refreshBtn.classList.remove('loading');
+      }
+      if (spinnerEl) spinnerEl.classList.remove('spinning');
+    }
+  }
+
+  window.reloadMarketInsights = loadInsights;
+
+  if (refreshBtn) {
+    refreshBtn.addEventListener('click', () => loadInsights(true));
+  }
+
+  loadInsights(false);
+}
+
+function renderMarketInsights(insights, contentEl) {
+  if (!contentEl) return;
+
+  const sentiment = insights.weeklySentiment || 'Steady';
+  const isSurging = sentiment.toLowerCase().includes('surging') || sentiment.toLowerCase().includes('bullish');
+  const sentimentClass = isSurging ? 'sentiment-surging' : 'sentiment-steady';
+
+  const highlightsHtml = (insights.highlights || []).map((h) => `
+    <div class="insight-highlight-card">
+      <span class="insight-highlight-metric">${escapeHtml(h.metric)}</span>
+      <strong class="insight-highlight-val">${escapeHtml(h.value)}</strong>
+      <small class="insight-highlight-change">${escapeHtml(h.change)}</small>
+    </div>
+  `).join('');
+
+  const commoditiesHtml = (insights.commodityTrends || []).map((c) => {
+    const isUp = c.trendDirection === 'up';
+    const isDown = c.trendDirection === 'down';
+    const arrow = isUp ? '↑' : isDown ? '↓' : '→';
+    const trendClass = isUp ? 'trend-up' : isDown ? 'trend-down' : 'trend-stable';
+
+    return `
+      <div class="insight-commodity-item">
+        <div class="insight-commodity-header">
+          <div>
+            <strong class="insight-commodity-name">${escapeHtml(c.commodity)}</strong>
+            <span class="insight-commodity-origin">${escapeHtml(c.origin || 'East Africa')}</span>
+          </div>
+          <div class="insight-commodity-pricing">
+            <span class="insight-commodity-price">${escapeHtml(c.priceBenchmark)}</span>
+            <span class="insight-trend-badge ${trendClass}">${arrow} ${escapeHtml(c.trendLabel)}</span>
+          </div>
+        </div>
+        <p class="insight-commodity-driver">${escapeHtml(c.keyDriver || '')}</p>
+      </div>
+    `;
+  }).join('');
+
+  const corridorsHtml = (insights.tradeCorridors || []).map((cr) => `
+    <div class="insight-corridor-card">
+      <div class="insight-corridor-header">
+        <strong>${escapeHtml(cr.corridor)}</strong>
+        <span class="insight-corridor-status">${escapeHtml(cr.activityStatus || 'Active')}</span>
+      </div>
+      <p class="insight-corridor-focus">Focus: <span>${escapeHtml(cr.commodityFocus || '')}</span></p>
+      <p class="insight-corridor-insight">${escapeHtml(cr.insight || '')}</p>
+    </div>
+  `).join('');
+
+  const adviceHtml = (insights.actionableAdvice || []).map((tip, idx) => `
+    <li class="insight-advice-item">
+      <span class="insight-advice-num">0${idx + 1}</span>
+      <p>${escapeHtml(tip)}</p>
+    </li>
+  `).join('');
+
+  const sourceBadge = insights.source === 'gemini_ai'
+    ? '<span class="insight-ai-pill"><span class="ai-sparkle">✦</span> Gemini 3.8 Flash</span>'
+    : '<span class="insight-ai-pill"><span class="ai-sparkle">✦</span> Market Data Intelligence</span>';
+
+  contentEl.innerHTML = `
+    <div class="insight-executive-banner">
+      <div class="insight-meta-row">
+        ${sourceBadge}
+        <div class="insight-sentiment-group">
+          <span class="insight-sentiment-pill ${sentimentClass}"><span class="pulse-dot"></span> ${escapeHtml(sentiment)}</span>
+          <span class="insight-volume-trend">${escapeHtml(insights.volumeTrendWoW || '+18.5% WoW')}</span>
+        </div>
+      </div>
+      <h3 class="insight-headline">${escapeHtml(insights.headline || 'Weekly Market Trends')}</h3>
+      <p class="insight-summary">${escapeHtml(insights.summary || '')}</p>
+    </div>
+
+    <div class="insight-highlights-grid">
+      ${highlightsHtml}
+    </div>
+
+    <div class="insight-tabs-nav">
+      <button type="button" class="insight-tab-btn active" data-insight-tab="commodities">Commodity Trends</button>
+      <button type="button" class="insight-tab-btn" data-insight-tab="corridors">Active Corridors</button>
+      <button type="button" class="insight-tab-btn" data-insight-tab="advice">Operator Action Items</button>
+    </div>
+
+    <div class="insight-tab-pane active" id="pane-commodities">
+      <div class="insight-commodities-list">
+        ${commoditiesHtml}
+      </div>
+    </div>
+
+    <div class="insight-tab-pane" id="pane-corridors" style="display: none;">
+      <div class="insight-corridors-list">
+        ${corridorsHtml}
+      </div>
+    </div>
+
+    <div class="insight-tab-pane" id="pane-advice" style="display: none;">
+      <ul class="insight-advice-list">
+        ${adviceHtml}
+      </ul>
+    </div>
+  `;
+
+  const tabButtons = contentEl.querySelectorAll('.insight-tab-btn');
+  tabButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      tabButtons.forEach((b) => b.classList.remove('active'));
+      btn.classList.add('active');
+      const target = btn.getAttribute('data-insight-tab');
+      ['commodities', 'corridors', 'advice'].forEach((tabName) => {
+        const pane = document.getElementById(`pane-${tabName}`);
+        if (pane) {
+          pane.style.display = tabName === target ? 'block' : 'none';
+          if (tabName === target) pane.classList.add('active');
+          else pane.classList.remove('active');
+        }
+      });
+    });
+  });
+}
+

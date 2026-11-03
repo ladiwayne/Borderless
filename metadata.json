@@ -1,0 +1,6 @@
+{
+  "name": "Borderless",
+  "description": "Borderless marketplace, RFQ board, and sourcing hub",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
