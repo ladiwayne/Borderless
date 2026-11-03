@@ -1,0 +1,40 @@
+name: Sync Borderless-2
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/30 * * * *"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sync-borderless-2
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Borderless
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure Git
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+      - name: Fetch Borderless-2
+        run: |
+          git remote add upstream https://github.com/ladiwayne/Borderless-2.git
+          git fetch upstream main
+
+      - name: Merge upstream updates
+        run: git merge --no-edit upstream/main
+
+      - name: Push synced branch
+        run: git push origin HEAD:main
