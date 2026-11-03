@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Borderless | Company Profile</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="theme.js"></script>
+</head>
+<body class="hubx-body phase-body research-body" data-company-profile>
+  <header class="hubx-main-nav phase-nav">
+    <div class="hubx-nav-inner">
+      <a href="index.html" class="hubx-logo"><span class="home-logo-mark">B</span>Borderless</a>
+      <button class="hubx-mobile-toggle" data-phase-nav-toggle type="button">Menu</button>
+      <nav class="hubx-nav-links"><a href="index.html">Explore</a><a class="active" href="companies.html">Companies</a><a href="sourcing-hub.html">Research</a><a href="rfqs.html">RFQs</a><a href="opportunities.html">Opportunities</a></nav>
+      <div class="hubx-nav-actions"><a href="account.html" class="hubx-link">Account</a><a href="sourcing-hub.html" class="hubx-cta">New search</a></div>
+    </div>
+    <div class="phase-mobile-menu"><a href="index.html">Explore</a><a href="companies.html">Companies</a><a href="sourcing-hub.html">Research</a><a href="rfqs.html">RFQs</a><a href="opportunities.html">Opportunities</a><a href="account.html">Account</a></div>
+  </header>
+  <div class="hubx-sub-nav"><div class="hubx-nav-inner hubx-sub-nav-inner"><a href="sourcing-hub.html">Research</a><a class="active" href="company.html">Company profile</a><a href="account.html">Saved companies</a></div></div>
+  <main class="phase-main research-page">
+    <p class="research-message" data-company-message role="status"></p>
+    <section class="company-profile-heading">
+      <div><p class="phase-kicker">Company profile</p><h1 data-company-name>Loading company</h1><p data-company-role-country>Loading details</p></div>
+      <div class="company-profile-actions"><span class="phase-status" data-company-status>Loading</span><button class="research-button research-button-secondary" type="button" data-company-save aria-pressed="false" disabled>Save company</button><button class="research-button research-button-primary" type="button" data-company-contact-open disabled>Request introduction</button></div>
+    </section>
+    <section class="phase-panel company-introduction-panel" data-company-intro-panel hidden>
+      <div class="phase-panel-heading"><div><p class="phase-kicker">Tracked follow-up</p><h2>Request an introduction</h2></div></div>
+      <form class="company-introduction-form" data-company-intro-form>
+        <label>Related research request<select name="requestId" data-intro-request required></select></label>
+        <label>Message for the Borderless team<textarea name="message" required placeholder="What would you like us to share or confirm?"></textarea></label>
+        <button class="research-button research-button-primary" type="submit">Send introduction request</button>
+      </form>
+    </section>
+    <section class="company-profile-grid">
+      <article class="phase-panel"><p class="phase-kicker">Overview</p><h2>Trade profile</h2><p data-company-description>Loading business information</p><dl class="company-facts"><div><dt>Established</dt><dd data-company-established>Loading</dd></div><div><dt>Markets served</dt><dd data-company-markets>Loading</dd></div><div><dt>Product categories</dt><dd data-company-categories>Loading</dd></div><div><dt>Certifications</dt><dd data-company-certifications>Loading</dd></div></dl></article>
+      <article class="phase-panel"><p class="phase-kicker">Trade activity</p><h2>Public listings</h2><div class="company-products-list" data-company-products><p class="research-empty">Loading company listings</p></div><p class="company-contact-note">Contact requests are routed through the Borderless team.</p></article>
+    </section>
+    <a class="research-back-link" href="companies.html">Back to company directory</a>
+  </main>
+  <script src="phase1.js"></script>
+  <script src="research.js"></script>
+</body>
+</html>
